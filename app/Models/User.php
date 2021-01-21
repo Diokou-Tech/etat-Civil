@@ -29,6 +29,10 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+    public function enfant(){
+
+        return $this->belongsTo(Enfant::class);
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

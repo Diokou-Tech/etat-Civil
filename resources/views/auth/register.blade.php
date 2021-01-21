@@ -1,7 +1,7 @@
 <x-guest-layout>
+    @livewire('header')
     <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+        <x-slot name="logo">            <a href="/"><h1 class="font-bold text-xl hover:text-gray-400 items-center"> Gestion Etat Civil <img  class='inline w-7 rounded' src="./images/sn.png" alt=""></h1></a>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -40,4 +40,5 @@
             </div>
         </form>
     </x-jet-authentication-card>
+    @livewire('footer')
 </x-guest-layout>
