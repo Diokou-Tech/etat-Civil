@@ -9,7 +9,26 @@ class Enfant extends Model
 {
     use HasFactory;
 
-    public function daron(){
-        return $this->hasMany(Daron::class);
+    protected $fillable = [
+        'nom',
+        'prenom',
+        'sexe',
+        'lieuNaiss',
+        'dateNaiss',
+        'heure',
+        'CNIpere',
+        'prenomPere',
+        'CNImere',
+        'nomMere',
+        'prenomMere',
+        'bulletin',
+        'jugement',
+        'CNIDeclarant',
+        'nomDeclarant',
+        'prenomDeclarant',
+        'officier',
+    ];
+    public function jugement(){
+        return $this->hasMany(Jugement::class);
     }
 }

@@ -2,7 +2,7 @@
     <form action="/declaration" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="grid grid-cols-3 gap-4">
-           <div class="">
+           <div>
                <fieldset>
                    <legend class="text-orange-700">Infos Enfant</legend>
                 <p class="m-2 p-1">
@@ -26,8 +26,8 @@
                 <p class="m-2 p-1">
                     <label for="sexe" class="block">sexe de l'enfant </label>
                     <select name="sexe" id="sexe" class="appearance-none w-3/4 border p-1 @error('sexe')  border-red-700  border-2 @enderror">
-                        <option value="M">Masculin</option>
-                        <option value="F">Feminin</option>
+                        <option value="masculin">Masculin</option>
+                        <option value="feminin">Feminin</option>
                     </select>
                     <small class="block text-red-600 p-1">
                         @error('sexe')
@@ -119,7 +119,10 @@
                     <legend  class="text-orange-700">infos complementaires</legend>
                 <p class="m-2 p-1">
                     <label for="jugement" class="block">Numero jugement</label>
-                    <input type="number" name="jugement" id="jugement" value="{{ old('jugement') }}" class="w-3/4 @error('jugement')  border-red-700  border-2 @enderror border  rounded p-1 appearance-none"">
+                    <input type="number" disabled name="jugement" id="jugement" value="{{ old('jugement') }}" class="w-3/4 @error('jugement')  border-red-700  border-2 @enderror border  rounded p-1 appearance-none"">
+                    <small class="block text-gray-700">
+                        ce champ n'est pas requis pour un nouveau né
+                    </small>
                     <small class="block text-red-600 p-1">
                         @error('jugement')
                             {{ $message }}
@@ -128,7 +131,7 @@
                 </p>
                 <p class="m-2 p-1">
                     <label for="bulletin" class="block">Bullentin Naissance</label>
-                    <input type="file" name="bulletin" id="bulletin" class="border w-3/4  rounded p-1 appearance-none @error('bulletin')  border-red-700  border-2 @enderror">
+                    <input type="file" accept=".pdf,.jpeg,.docx,.jpg" name="bulletin" id="bulletin" class="border w-3/4  rounded p-1 appearance-none @error('bulletin')  border-red-700  border-2 @enderror">
                     <small class="block text-red-600 p-1 p-1">
                         @error('bulletin')
                             {{ $message }}

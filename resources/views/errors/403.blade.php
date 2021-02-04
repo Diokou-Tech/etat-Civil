@@ -26,6 +26,7 @@
         </style>
     </head>
     <body>
+        @livewire('header')
         <h1 class="h1 bg-dark text-center"> <em> Erreur 403 : Vous n'etes pas autorisé à acceder à cette page</em></h1>
         <h2 class="text-center">By Zola</h2>
         <a href="/tableauBord" class="h3 text-center">Retour &larr;</a>

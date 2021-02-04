@@ -1,4 +1,9 @@
 <div>
+    @if(Session::has('error'))
+<div class="bg-red-700 text-white w-96 mx-auto p-2 text-bold alert text-sm">
+    <i class="fa fa-check"></i>  {{ Session()->get('error') }}
+</div>
+@endif
     <form action="/update/{{ $enfant->id }}" method="POST">
         @csrf
         <div class="grid grid-cols-3 gap-4">
@@ -26,8 +31,8 @@
                 <p class="m-2 p-1">
                     <label for="sexe" class="block">sexe de l'enfant </label>
                     <select name="sexe" id="sexe" class="appearance-none w-3/4 border p-1 @error('sexe')  border-red-700  border-2 @enderror">
-                        <option value="M">Masculin</option>
-                        <option value="F">Feminin</option>
+                        <option value="masculin" @if ($enfant->sexe== 'masculin') selected @endif>Masculin</option>
+                        <option value="feminin" @if ($enfant->sexe== 'feminin') selected @endif>Feminin</option>
                     </select>
                     <small class="block text-red-600 p-1">
                         @error('sexe')

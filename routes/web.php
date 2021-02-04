@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DecController;
+use App\Http\Controllers\JugementController;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Models\Team;
@@ -20,7 +21,8 @@ use Barryvdh\DomPDF\PDF;
 
 Route::get('/', function (Request $req) {
     return view('welcome');
-});
+})->name('welcome');
+
 Route::get('/apropos', function () {
     return view('pages.apropos');
 });
@@ -37,10 +39,10 @@ Route::get('/guide', function () {
 Route::get('team', function () {
     dd(Team::find(1));
 });
-
 Route::middleware(['auth:sanctum', 'verified'])->get('/tableauBord', function () {
     return view('tableauBord',['enfants' => Enfant::all()]);
 })->name('tableauBord');
+// pour les declarations des enfants
 Route::middleware(['auth:sanctum', 'verified'])->get('/declaration', [DecController::class,'index'])->name('declaration');
 Route::middleware(['auth:sanctum', 'verified'])->post('/declaration', [DecController::class,'store'])->name('declaration');
 Route::middleware(['auth:sanctum', 'verified'])->get('/delete/{id}', [DecController::class,'destroy'])->name('delete');
@@ -49,3 +51,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/show/{id}', [DecControlle
 Route::middleware(['auth:sanctum', 'verified'])->post('/update/{id}', [DecController::class,'update'])->name('update');
 Route::middleware(['auth:sanctum', 'verified'])->get('/print/{id}', [DecController::class,'print'])->name('print');
 Route::middleware(['auth:sanctum', 'verified'])->match(['get', 'post'],'/search', [DecController::class,'search'])->name('search');
+//pour les jugements des enfants
+Route::middleware(['auth:sanctum', 'verified'])->get('/jugement', [JugementController::class,'index'])->name('jugement');
+Route::middleware(['auth:sanctum', 'verified'])->post('/jugement', [JugementController::class,'store'])->name('add');
+Route::middleware(['auth:sanctum', 'verified'])->get('/delJugement/{id}', [JugementController::class,'destroy'])->name('delJugement');
+Route::middleware(['auth:sanctum', 'verified'])->get('/editJugement/{id}', [JugementController::class,'edit'])->name('editJugement');
+Route::middleware(['auth:sanctum', 'verified'])->post('/updateJuge/{id}', [JugementController::class,'update'])->name('updateJugement');

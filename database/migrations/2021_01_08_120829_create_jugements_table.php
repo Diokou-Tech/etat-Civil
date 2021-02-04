@@ -14,11 +14,13 @@ class CreateJugementsTable extends Migration
     public function up()
     {
         Schema::create('jugements', function (Blueprint $table) {
-            $table->id();
+            $table->bigInteger('idJugement')->unsigned();
             $table->string('tribunal');
             $table->string('motif');
             $table->date('dateJugement');
             $table->timestamps();
+            $table->primary('idJugement');
+
         });
     }
 

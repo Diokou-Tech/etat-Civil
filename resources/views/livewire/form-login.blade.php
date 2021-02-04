@@ -1,7 +1,7 @@
 <div class="m-30 p-40">
     <x-guest-layout>
             <x-jet-validation-errors class="mb-4" />
-    
+
             @if (session('status'))
                 <div class="mb-4 font-medium text-sm text-green-600">
                     {{ session('status') }}
@@ -10,17 +10,17 @@
             <div class="flex flex-column">
                 <form method="POST" action="{{ route('login') }}" class="w-full">
                     @csrf
-        
+
                     <div>
-                        <x-jet-label for="email" value="{{ __('Email') }}" />
-                        <x-jet-input id="email" class="block mt-1 w-3/4" type="email" name="email" :value="old('email')" required autofocus />
+                        <x-jet-label for="email" value="{{ __('login') }}" />
+                        <x-jet-input id="email" class="block mt-1 w-3/4" type="name" name="name" :value="old('name')" required autofocus />
                     </div>
-        
+
                     <div class="mt-4">
-                        <x-jet-label for="password" value="{{ __('Password') }}" />
+                        <x-jet-label for="password" value="{{ __('Mot de Passe') }}" />
                         <x-jet-input id="password" class="block mt-1 w-3/4" type="password" name="password" required autocomplete="current-password" />
                     </div>
-        
+
                     <div class="block mt-4">
                         <label for="remember_me" class="flex items-center">
                             <input id="remember_me" type="checkbox" class="form-checkbox" name="remember">
@@ -44,6 +44,6 @@
             </div>
 
     </x-guest-layout>
-    
+
 </div>
 

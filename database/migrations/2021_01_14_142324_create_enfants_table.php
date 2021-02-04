@@ -34,9 +34,11 @@ class CreateEnfantsTable extends Migration
             $table->bigInteger('officier')->unsigned();
             $table->timestamps();
             $table->foreign('officier')->references('id')->on('users');
-            $table->foreign('CNIpere')->references('numeroCNI')->on('darons');
-            $table->foreign('CNImere')->references('numeroCNI')->on('darons');
-            $table->foreign('jugement')->references('id')->on('jugements');
+            //$table->foreign('CNIpere')->references('numeroCNI')->on('darons');
+            //$table->foreign('CNImere')->references('numeroCNI')->on('darons');
+            $table->foreign('jugement')->references('idJugement')->on('jugements')->constrained()
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
         });
     }
 

@@ -8,6 +8,11 @@
         <i class="fa fa-check"></i>  {{ Session()->get('success') }}
     </div>
     @endif
+    @if(Session::has('error'))
+    <div class="bg-red-700 text-white text-center w-96 p-1 text-bold">
+        <i class="fa fa-check"></i>  {{ Session()->get('error') }}
+    </div>
+    @endif
     @livewire('form-declaration')
 </div>
 @livewire('footer')
