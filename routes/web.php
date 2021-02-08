@@ -8,6 +8,8 @@ use App\Models\Team;
 use App\Models\Enfant;
 use Illuminate\Support\Facades\App;
 use Barryvdh\DomPDF\PDF;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,7 +22,11 @@ use Barryvdh\DomPDF\PDF;
 */
 
 Route::get('/', function (Request $req) {
-    return view('welcome');
+    if(Auth::check()){
+        return view('tableauBord',['enfants' => Enfant::all()]);
+    }else{
+        return view('welcome');
+    }
 })->name('welcome');
 
 Route::get('/apropos', function () {
